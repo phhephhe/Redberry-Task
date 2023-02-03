@@ -90,6 +90,9 @@
     width: 50%;
 }
 /* photo upload */
+.photo-upload {
+    margin: 55px 0px;
+}
 .photo-upload label:first-of-type {
     font-size: 18px;
     font-weight: 500;
@@ -114,7 +117,7 @@
 .about-me-container,
 .email-container,
 .phone-container {
-    margin: 50px 0px;
+    margin: 35px 0px;
 }
 .about-me-container label,
 .email-container label,
@@ -162,15 +165,15 @@
 }
 /* nexbutton */
 .next-button-container{
-    position: relative;
+    display: flex;
+    justify-content: right;
+    align-items: center;
     margin-top: 150px;
 }
 .next-button-container .next-button{
-    position: absolute;
-    right: 0;
     color: white;
     background-color: #6B40E3;
-    padding: 18px 40px;
+    padding: 15px 38px;
     border: none;
     font-size: 16px;
     line-height: 20px;
@@ -178,8 +181,26 @@
     font-weight: 500;
     border-radius: 4px;
 }
+
+/* add-experience-btn */
+.add-experience-btn {
+    margin-top: 45px;
+    color: white;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    padding: 14px 21px;
+    background-color: #62A1EB;
+    border: none;
+    border-radius: 4px;
+}
+
 /* right-container */
 .right-container {
     height: 100vh;
     width: 42.82%;
 }
+
+
+/* experience page */
+
