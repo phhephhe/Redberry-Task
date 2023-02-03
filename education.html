@@ -10,33 +10,29 @@
     <link rel="shortcut icon" href="https://freepngimg.com/download/scroll/12-2-scroll-png-pic.png" type="image/x-icon">
 </head>
 <body>
-    <a href="education.html">education page</a>
     <div class="main-container">
         <div class="left-container">
-            <a href="personal-info.html" class="vector">
+            <a href="experience.html" class="vector">
                 <img src="photos/Vector.png" alt="Vector-left">
             </a>
             <div class="form-header">
-                <h3>გამოცდილება</h3>
-                <span>2/3</span>
+                <h3>განათლება</h3>
+                <span>3/3</span>
             </div>
             <div class="line"></div>
             <form action="" method="post" enctype="multipart/form-data" id="form">
                 <div class="new-experience">              
                     <div class="email-container">
-                        <label for="">თანამდებობა</label>
-                        <input type="text" name="position" id="position" placeholder="დეველოპერი, დიზაინერი, ა.შ.">
+                        <label for="institute">სასწავლებელი</label>
+                        <input type="text" name="institute" id="institute" placeholder="სასწავლებელი">
                         <p>მინიმუმ 2 სიმბოლო</p>
                     </div>
-                    <div class="phone-container">
-                        <label for="employer">დამსაქმებელი</label>
-                        <input type="text" name="employer" id="employer" placeholder="დამსაქმებელი">
-                        <p>მინიმუმ 2 სიმბოლო</p>
-                    </div>
-                    <div class="fullname">
+                    <div class="fullname" style="margin: 35px 0px;">
                         <div class="name">
-                            <label for="start_date">დაწყების რიცხვი</label>
-                            <input type="date" name="start_date" id="start_date" placeholder="ანზორ">
+                            <label for="degree">ხარისხი</label>
+                            <select name="degree" id="degree" class="select">
+                                <option value="" disabled selected>აირჩიე ხარისხი</option>
+                            </select>
                         </div>
                         <div class="surname">
                             <label for="due_date">დამთავრების რიცხვი</label>
@@ -45,14 +41,14 @@
                     </div>
                     <div class="about-me-container">
                         <label for="description">აღწერა</label>
-                        <textarea name="description" id="description" class="textarea" placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"></textarea>
+                        <textarea name="description" id="description" class="textarea" style="height: 179px;" placeholder="განათლების აღწერა"></textarea>
                     </div>
-                    <div class="line"></div>
+                    <div class="line" style="margin-top: 55px;"></div>
                 </div> 
                 <button class="add-experience-btn">მეტი გამოცდილების დამატება</button>
-                <div class="next-button-container" style="justify-content: space-between; margin-top: 110px;">
-                    <a href="personal-info.html" class="next-button">უკან</a>
-                    <button type="submit" class="next-button">შემდეგი</button>
+                <div class="next-button-container" style="justify-content: space-between; margin-top: 180px;">
+                    <a href="experience.html" class="next-button">უკან</a>
+                    <button type="submit" class="next-button">დასრულება</button>
                 </div>  
             </form>
         </div>
