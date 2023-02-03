@@ -1,0 +1,185 @@
+.main-container{
+    display: flex;
+    height: 100vh;
+
+} 
+.vector {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 48px;
+    top: 45px;
+    border-radius: 50%;
+    background-color: white;
+}
+.vector img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.left-container {
+    /* position: relative; */
+    width: 57.18%;
+    height: 100vh;
+    background-color: #F6F6F6;
+    padding: 50px 150px;
+}
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.form-header h3{
+    font-weight: 700; 
+    font-size: 24px;    
+    line-height:29.3px;
+}
+.form-header span {
+    font-size: 20px;
+}
+.line{
+    margin-top: 15px;
+    width: 100%;
+    height: 1px;
+    background-color: #1A1A1A;
+}
+.fullname{
+    display: flex;
+    gap: 52px;
+    margin: 69px 0px 54px;
+}
+.name {
+    width: 50%;
+}
+.name label, .surname label {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+}
+.name input, .surname input {
+    padding: 13px 16px;
+    border: 1px solid #BCBCBC;
+    border-radius: 4px;
+    width: 100%;
+    outline: none;
+    margin: 8px 0px;
+}
+.name p, .surname p{
+    font-size: 14px;
+    font-weight: 300;
+    color: #2E2E2E;
+    line-height: 21px;
+}
+.name input::placeholder, .surname input::placeholder{
+    font-size: 16px;
+    font-weight: 400;
+    color:rgba(0, 0, 0, 0.6);
+    line-height: 21px;
+}
+.name input:focus,
+.surname input:focus,
+.about-me-container textarea:focus,
+.email-container input:focus,
+.phone-container input:focus{
+   border-color:  #767373;
+}
+
+
+.surname {
+    width: 50%;
+}
+/* photo upload */
+.photo-upload label:first-of-type {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    margin-right: 19px;
+    color: #1A1A1A;
+}
+.ulpoad {
+    color: white;
+    padding: 7px 19px;
+    font-size: 14px;
+    background-color: #0E80BF;
+    cursor: pointer;
+    line-height: 16.7px;
+    font-weight: 400;
+    border-radius: 4px;
+}
+.ulpoad input {
+    display: none;
+}
+/* about-me */
+.about-me-container,
+.email-container,
+.phone-container {
+    margin: 50px 0px;
+}
+.about-me-container label,
+.email-container label,
+.phone-container label {
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: 500;
+}
+.about-me-container textarea{
+    margin-top: 8px;
+    resize: none;
+    width: 100%;
+    height: 103px;
+    outline: none;
+    border: 1px solid #BCBCBC;
+    border-radius: 4px;
+    padding-top: 13px;
+    padding-left: 16px;
+}
+.email-container input,
+.phone-container input {
+    padding: 13px 16px;
+    border: 1px solid #BCBCBC;
+    border-radius: 4px;
+    width: 100%;
+    outline: none;
+    margin: 8px 0px;
+}
+/* .phone-container input {
+    font-size: 18px;
+} */
+.email-container p,
+.phone-container p {
+    font-size: 14px;
+    font-weight: 300;
+    color: #2E2E2E;
+    line-height: 21px;
+}
+.about-me-container textarea::placeholder,
+.email-container input::placeholder,
+.phone-container input::placeholder{
+   font-size: 16px;
+   line-height: 21px;
+   font-weight: 400;
+}
+/* nexbutton */
+.next-button-container{
+    position: relative;
+    margin-top: 150px;
+}
+.next-button-container .next-button{
+    position: absolute;
+    right: 0;
+    color: white;
+    background-color: #6B40E3;
+    padding: 18px 40px;
+    border: none;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1.28px;
+    font-weight: 500;
+    border-radius: 4px;
+}
+/* right-container */
+.right-container {
+    height: 100vh;
+    width: 42.82%;
+}
