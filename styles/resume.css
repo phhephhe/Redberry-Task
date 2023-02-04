@@ -26,7 +26,7 @@
     border: 1px solid black;
     height: 1080px;
 }
-.fullname{
+.r-fullname{
     color: #F93B1D;
     font-weight: 700;
     font-size: 34px;
@@ -63,13 +63,15 @@
     font-weight: 700;
     margin: 30px 0px 15px;
 }
-#about_me {
-    max-width: 430px;
+#r-about_me {
+    max-width: 420px;
     width: 100%;
     color: #1A1A1A;
     font-size: 16px;
     font-weight: 400;
     line-height: 22px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
 }
 .line{
     width: 100%;
@@ -92,10 +94,12 @@
     color: #909090;
     margin: 7px 0px 15px;
 }
-#description, #education_description{
+#r-description, #r-education_description{
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
 }
 .small-logo{
     position: absolute;
