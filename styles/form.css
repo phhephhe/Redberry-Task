@@ -49,6 +49,21 @@
 }
 .name {
     width: 50%;
+    position: relative;
+}
+/* success */
+.check{
+    position: absolute;
+    right: 9px;
+    bottom: 42px;
+    display: none;
+}
+/* error */
+.warning{
+    position: absolute;
+    right: -30px;
+    bottom: 42px;
+    display: none;
 }
 .name label, .surname label {
     font-size: 16px;
@@ -86,6 +101,7 @@
 
 .surname {
     width: 50%;
+    position: relative;
 }
 /* photo upload */
 .photo-upload {
@@ -208,3 +224,19 @@
 
 /* experience page */
 
+/* error & success classes */
+.success input {
+    border-color: #98E37E;
+}
+.success .check {
+    display: block;
+}
+.error input{
+    border-color: #E52F2F;
+}
+.error label {
+    color: #E52F2F;
+}
+.error .warning {
+    display: block;
+}

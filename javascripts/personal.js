@@ -29,3 +29,67 @@ imageInput.addEventListener("change", function() {
 
 
 
+// validations
+let nameValid = true;
+let surnameValid = true; 
+// check georgian language
+function checkLang(text = '') {
+    let spells = text.split('');
+    for(let i = 0; i < spells.length; i++){
+        if(!(/[ა-ჰ]/).test(spells[i]) && spells[i] !== ' '){
+            return false;
+        }
+    }
+    return true;
+};
+
+const firstname = document.querySelector('.name');
+const name = document.getElementById('name');
+name.value = localStorage.getItem('name') ? localStorage.getItem('name') : "";
+
+name.addEventListener('change', (el) => {
+    if(!el.target.value.trim()){
+        firstname.classList.remove('success');
+        firstname.classList.add('error');
+        nameValid = false;
+    }else if(el.target.value.trim().length < 2){
+        firstname.classList.remove('success');
+        firstname.classList.add('error');
+        nameValid = false;
+    }else if(!checkLang(el.target.value.trim())){
+        firstname.classList.remove('success');
+        firstname.classList.add('error');
+        nameValid = false;
+    }else{
+        localStorage.setItem('name', el.target.value.trim());
+        firstname.classList.remove('error');
+        firstname.classList.add('success');
+        nameValid = true;
+    }
+})
+
+const lastname = document.querySelector('.surname');
+const surname = document.getElementById('surname');
+
+surname.value = localStorage.getItem('surname') ? localStorage.getItem('surname') : "";
+
+surname.addEventListener('change', (el) => {
+    if(!el.target.value.trim()){
+        lastname.classList.remove('success');
+        lastname.classList.add('error');
+        surnameValid = false;
+    }else if(el.target.value.trim().length < 2){
+        lastname.classList.remove('success');
+        lastname.classList.add('error');
+        surnameValid = false;
+    }else if(!checkLang(el.target.value.trim())){
+        lastname.classList.remove('success');
+        lastname.classList.add('error');
+        surnameValid = false;
+    }else{
+        localStorage.setItem('surname', el.target.value.trim());
+        lastname.classList.remove('error');
+        lastname.classList.add('success');
+        surnameValid = true;
+    }
+})
