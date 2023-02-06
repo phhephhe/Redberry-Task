@@ -32,6 +32,7 @@ imageInput.addEventListener("change", function() {
 // validations
 let nameValid = true;
 let surnameValid = true; 
+
 // check georgian language
 function checkLang(text = '') {
     let spells = text.split('');
@@ -93,3 +94,54 @@ surname.addEventListener('change', (el) => {
         surnameValid = true;
     }
 })
+
+// PHOTO
+const photoContainer = document.querySelector('.photo-upload');
+const photoInput = document.getElementById('image');
+
+photoInput.addEventListener('change', (el) => {
+    if(!el.target.value){
+        phoneContainer.classList.add('error')
+        // აქ უნდა დავამატო გაფრთხილების icon
+    }
+})
+
+// ABOUT ME არა სავალდებულო
+const aboutContainer = document.querySelector('.about-me-container');
+const aboutMeTextarea = document.getElementById('about_me');
+
+// EMAIL
+let emailValid = true;
+const emailContainer = document.querySelector('.email-container');
+const emailInput = document.getElementById('email');
+
+const redberryMail = /^([A-Za-z0-9\._]+)@redberry.ge$/;
+const mailValidation = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+emailInput.value = localStorage.getItem('email') ? localStorage.getItem('email') : '';
+emailInput.addEventListener('change', (el) => {
+    if(!el.target.value.trim()){
+        emailContainer.classList.remove('success');
+        emailContainer.classList.add('error');
+        emailValid = false;
+    }else if(!el.target.value.match(mailValidation)){
+        emailContainer.classList.remove('success');
+        emailContainer.classList.add('error');
+        emailValid = false;
+    }else if(!el.target.value.match(redberryMail)){
+        emailContainer.classList.remove('success');
+        emailContainer.classList.add('error');
+        emailValid = false;
+    }else{
+        localStorage.setItem('email', el.target.value.trim());
+        emailContainer.classList.remove('error');
+        emailContainer.classList.add('success');
+        emailValid = true; 
+    }
+});
+
+
+
+// PHONE
+// const phoneContainer = document.querySelector('.phone-container');
+// const phoneInput = document.getElementById('phone_number');
