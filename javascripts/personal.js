@@ -1,3 +1,10 @@
+// validations
+let nameValid = true;
+let surnameValid = true; 
+let emailValid = true;
+let mobileValid = true;
+
+
 function livetype(inputFieldId, outputId) {
     const inputField = document.getElementById(inputFieldId);
     const output = document.getElementById(outputId);
@@ -26,12 +33,6 @@ imageInput.addEventListener("change", function() {
 
   reader.readAsDataURL(imageInput.files[0]);
 });
-
-
-
-// validations
-let nameValid = true;
-let surnameValid = true; 
 
 // check georgian language
 function checkLang(text = '') {
@@ -107,19 +108,38 @@ photoInput.addEventListener('change', (el) => {
 })
 
 // ABOUT ME არა სავალდებულო
+const about = document.querySelector('.about-me');
 const aboutContainer = document.querySelector('.about-me-container');
 const aboutMeTextarea = document.getElementById('about_me');
-
+aboutMeTextarea.value = localStorage.getItem('about_me') ? localStorage.getItem('about_me') : "";
+aboutMeTextarea.addEventListener('change', (el) => {
+    if(el.target.value){
+        about.style.display = 'block';
+        localStorage.setItem('about_me', el.target.value);
+        
+    }else {
+        about.style.display = 'none';
+    }
+})
 // EMAIL
-let emailValid = true;
+const rEmail = document.getElementById('r-email');
+const sabachka = document.getElementById('sabachka');
 const emailContainer = document.querySelector('.email-container');
 const emailInput = document.getElementById('email');
 
 const redberryMail = /^([A-Za-z0-9\._]+)@redberry.ge$/;
 const mailValidation = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-
+    
+rEmail.value = localStorage.getItem('email') ? localStorage.getItem('email') : '';
+// მარჯვენა კონტეინერში დარეფრეშებისას იკარგება ინფორმაცია!!!!!!!!!!!!!!!
+// /!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 emailInput.value = localStorage.getItem('email') ? localStorage.getItem('email') : '';
 emailInput.addEventListener('change', (el) => {
+    if(el.target.value){
+        sabachka.style.display = 'block'
+    }else{
+        sabachka.style.display = 'none'
+    }
     if(!el.target.value.trim()){
         emailContainer.classList.remove('success');
         emailContainer.classList.add('error');
@@ -143,5 +163,42 @@ emailInput.addEventListener('change', (el) => {
 
 
 // PHONE
-// const phoneContainer = document.querySelector('.phone-container');
-// const phoneInput = document.getElementById('phone_number');
+function checkNumber(number) {
+    let withoutSpace = number.replaceAll(' ', '');
+    let geoNum = withoutSpace.slice(0, 5);
+    if(geoNum == '+9955' && withoutSpace.length === 13){
+        return true;
+    } else {
+        return false;
+    }
+};
+const phoneIcon = document.getElementById('phoneIcon');
+const phoneContainer = document.querySelector('.phone-container');
+const phoneInput = document.getElementById('phone_number');
+
+phoneInput.value = localStorage.getItem('phone_number') ? localStorage.getItem('phone_number') : '';
+
+phoneInput.addEventListener('change', (el) => {
+    if(el.target.value){
+        phoneIcon.style.display = 'block'
+    }else{
+        phoneIcon.style.display = 'none'
+    }
+    if(!el.target.value.trim()){
+        phoneContainer.classList.add('error');
+        phoneContainer.classList.remove('success');
+        mobileValid = false;
+    }else if(!checkNumber(el.target.value)) {
+        phoneContainer.classList.add('error');
+        phoneContainer.classList.remove('success');
+        mobileValid = false;
+    } else{
+        localStorage.setItem('phone_number', el.target.value.trim().replaceAll(' ', ''));
+        phoneContainer.classList.remove('error');
+        phoneContainer.classList.add('success');
+        mobileValid = true;
+    }
+});
+
+
+// 

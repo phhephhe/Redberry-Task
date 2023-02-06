@@ -132,6 +132,13 @@
 .email-container,
 .phone-container {
     margin: 35px 0px;
+    position: relative;
+}
+#phoneIcon,
+#sabachka,
+.about-me,
+#r-image {
+    display: none;
 }
 .about-me-container label,
 .email-container label,
