@@ -128,15 +128,15 @@ const aboutContainer = document.querySelector('.about-me-container');
 const aboutMeTextarea = document.getElementById('about_me');
 aboutMeTextarea.value = localStorage.getItem('about_me') ? localStorage.getItem('about_me') : "";
 rAbout.innerHTML = localStorage.getItem('about_me') ? localStorage.getItem('about_me') : "";
-    console.log(about);
+
 aboutMeTextarea.addEventListener('change', (el) => {
     if(el.target.value){
         about.style.display = 'block';
-        localStorage.setItem('about_me', el.target.value);   
-    }else {
-        about.style.display = 'none';
+        localStorage.setItem('about_me', el.target.value);  
+        localStorage.setItem("displayAbout", about.style.display); 
     }
-})
+});
+
 // EMAIL
 const rEmail = document.getElementById('r-email');
 const sabachka = document.getElementById('sabachka');
@@ -168,13 +168,13 @@ emailInput.addEventListener('change', (el) => {
         emailContainer.classList.add('error');
         emailValid = false;
     }else{
+        localStorage.setItem("displaySabachka", sabachka.style.display); 
         localStorage.setItem('email', el.target.value.trim());
         emailContainer.classList.remove('error');
         emailContainer.classList.add('success');
         emailValid = true; 
     }
 });
-
 
 
 // PHONE
@@ -209,6 +209,7 @@ phoneInput.addEventListener('change', (el) => {
         phoneContainer.classList.remove('success');
         mobileValid = false;
     } else{
+        localStorage.setItem("displayPhone", phoneIcon.style.display); 
         localStorage.setItem('phone_number', el.target.value.trim().replaceAll(' ', ''));
         phoneContainer.classList.remove('error');
         phoneContainer.classList.add('success');
@@ -216,5 +217,19 @@ phoneInput.addEventListener('change', (el) => {
     }
 });
 
+ 
+window.onload = function() {
+    var displayAbout= localStorage.getItem("displayAbout");
+    var displayPhone = localStorage.getItem("displayPhone");
+    var displaySabachka = localStorage.getItem("displaySabachka");
 
-// 
+    if (displayAbout) {
+      about.style.display = displayAbout;
+    }
+    if (displaySabachka) {
+      sabachka.style.display = displaySabachka;
+    }
+    if(displayPhone) {
+        phoneIcon.style.display = displayPhone;
+    }
+};
