@@ -123,6 +123,7 @@ photoInput.addEventListener('change', (el) => {
 
 // ABOUT ME არა სავალდებულო
 const rAbout = document.getElementById('r-about_me');
+//rightcontaner red text
 const about = document.querySelector('.about-me');
 const aboutContainer = document.querySelector('.about-me-container');
 const aboutMeTextarea = document.getElementById('about_me');
@@ -132,8 +133,11 @@ rAbout.innerHTML = localStorage.getItem('about_me') ? localStorage.getItem('abou
 aboutMeTextarea.addEventListener('change', (el) => {
     if(el.target.value){
         about.style.display = 'block';
+        aboutMeTextarea.classList.add('borderGreen')
         localStorage.setItem('about_me', el.target.value);  
         localStorage.setItem("displayAbout", about.style.display); 
+    }else{
+        aboutMeTextarea.classList.remove('borderGreen')g
     }
 });
 

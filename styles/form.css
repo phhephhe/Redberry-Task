@@ -231,6 +231,9 @@
 /* experience page */
 
 /* error & success classes */
+.borderGreen {
+    border-color: #98E37E !important;
+}
 .success input {
     border-color: #98E37E;
 }
