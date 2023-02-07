@@ -137,7 +137,7 @@ aboutMeTextarea.addEventListener('change', (el) => {
         localStorage.setItem('about_me', el.target.value);  
         localStorage.setItem("displayAbout", about.style.display); 
     }else{
-        aboutMeTextarea.classList.remove('borderGreen')g
+        aboutMeTextarea.classList.remove('borderGreen')
     }
 });
 
