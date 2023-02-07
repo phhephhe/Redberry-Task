@@ -22,13 +22,15 @@ function livetype(inputFieldId, outputId) {
 //   photo
 
 const imageInput = document.getElementById('image');
-const resumeImage = document.getElementById('r-image');
+const imageContainer = document.querySelector('.image-container')
 
 imageInput.addEventListener("change", function() {
   const reader = new FileReader();
 
   reader.onload = function(event) {
+    const resumeImage = document.createElement('img');
     resumeImage.src = event.target.result;
+    imageContainer.appendChild(resumeImage)
   };
 
   reader.readAsDataURL(imageInput.files[0]);
@@ -48,6 +50,8 @@ function checkLang(text = '') {
 const firstname = document.querySelector('.name');
 const name = document.getElementById('name');
 name.value = localStorage.getItem('name') ? localStorage.getItem('name') : "";
+const rName = document.getElementById('r-name');
+rName.innerHTML = localStorage.getItem('name') ? localStorage.getItem('name') : "";
 
 name.addEventListener('change', (el) => {
     if(!el.target.value.trim()){
@@ -72,8 +76,9 @@ name.addEventListener('change', (el) => {
 
 const lastname = document.querySelector('.surname');
 const surname = document.getElementById('surname');
-
 surname.value = localStorage.getItem('surname') ? localStorage.getItem('surname') : "";
+const rSurname = document.getElementById('r-surname');
+rSurname.innerHTML = localStorage.getItem('surname') ? localStorage.getItem('surname') : "";
 
 surname.addEventListener('change', (el) => {
     if(!el.target.value.trim()){
@@ -108,15 +113,17 @@ photoInput.addEventListener('change', (el) => {
 })
 
 // ABOUT ME არა სავალდებულო
+const rAbout = document.getElementById('r-about_me');
 const about = document.querySelector('.about-me');
 const aboutContainer = document.querySelector('.about-me-container');
 const aboutMeTextarea = document.getElementById('about_me');
 aboutMeTextarea.value = localStorage.getItem('about_me') ? localStorage.getItem('about_me') : "";
+rAbout.innerHTML = localStorage.getItem('about_me') ? localStorage.getItem('about_me') : "";
+    console.log(about);
 aboutMeTextarea.addEventListener('change', (el) => {
     if(el.target.value){
         about.style.display = 'block';
-        localStorage.setItem('about_me', el.target.value);
-        
+        localStorage.setItem('about_me', el.target.value);   
     }else {
         about.style.display = 'none';
     }
@@ -130,9 +137,8 @@ const emailInput = document.getElementById('email');
 const redberryMail = /^([A-Za-z0-9\._]+)@redberry.ge$/;
 const mailValidation = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
     
-rEmail.value = localStorage.getItem('email') ? localStorage.getItem('email') : '';
-// მარჯვენა კონტეინერში დარეფრეშებისას იკარგება ინფორმაცია!!!!!!!!!!!!!!!
-// /!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+rEmail.innerHTML = localStorage.getItem('email') ? localStorage.getItem('email') : '';
+
 emailInput.value = localStorage.getItem('email') ? localStorage.getItem('email') : '';
 emailInput.addEventListener('change', (el) => {
     if(el.target.value){
@@ -175,8 +181,9 @@ function checkNumber(number) {
 const phoneIcon = document.getElementById('phoneIcon');
 const phoneContainer = document.querySelector('.phone-container');
 const phoneInput = document.getElementById('phone_number');
-
 phoneInput.value = localStorage.getItem('phone_number') ? localStorage.getItem('phone_number') : '';
+const rPhone = document.getElementById('r-phone');
+rPhone.innerHTML = localStorage.getItem('phone_number') ? "123"+ localStorage.getItem('phone_number') : '';
 
 phoneInput.addEventListener('change', (el) => {
     if(el.target.value){

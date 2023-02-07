@@ -136,8 +136,7 @@
 }
 #phoneIcon,
 #sabachka,
-.about-me,
-#r-image {
+.about-me {
     display: none;
 }
 .about-me-container label,
