@@ -22,8 +22,7 @@ function livetype(inputFieldId, outputId) {
 //   photo
 
 const imageInput = document.getElementById('image');
-const imageContainer = document.querySelector('.image-container')
-
+let imageContainer = document.querySelector('.image-container')
 imageInput.addEventListener("change", function() {
   const reader = new FileReader();
 
@@ -31,10 +30,20 @@ imageInput.addEventListener("change", function() {
     const resumeImage = document.createElement('img');
     resumeImage.src = event.target.result;
     imageContainer.appendChild(resumeImage)
+    localStorage.setItem('image', event.target.result );
   };
 
   reader.readAsDataURL(imageInput.files[0]);
 });
+var imageData = localStorage.getItem('image');
+if (imageData) {
+    // Create an image element
+    var image = new Image();
+    image.src = imageData;
+
+    // Append the image to the body
+    imageContainer.appendChild(image);
+  }
 
 // check georgian language
 function checkLang(text = '') {
@@ -183,7 +192,7 @@ const phoneContainer = document.querySelector('.phone-container');
 const phoneInput = document.getElementById('phone_number');
 phoneInput.value = localStorage.getItem('phone_number') ? localStorage.getItem('phone_number') : '';
 const rPhone = document.getElementById('r-phone');
-rPhone.innerHTML = localStorage.getItem('phone_number') ? "123"+ localStorage.getItem('phone_number') : '';
+rPhone.innerHTML = localStorage.getItem('phone_number') ? + localStorage.getItem('phone_number') : '';
 
 phoneInput.addEventListener('change', (el) => {
     if(el.target.value){
