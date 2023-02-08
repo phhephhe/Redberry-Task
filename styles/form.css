@@ -105,6 +105,7 @@
 }
 /* photo upload */
 .photo-upload {
+    position: relative;
     margin: 55px 0px;
 }
 .photo-upload label:first-of-type {
@@ -200,6 +201,7 @@
     letter-spacing: 1.28px;
     font-weight: 500;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 /* add-experience-btn */

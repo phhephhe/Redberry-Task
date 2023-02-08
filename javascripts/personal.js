@@ -3,7 +3,7 @@ let nameValid = true;
 let surnameValid = true; 
 let emailValid = true;
 let mobileValid = true;
-
+let photoValid = true;
 
 function livetype(inputFieldId, outputId) {
     const inputField = document.getElementById(inputFieldId);
@@ -115,9 +115,13 @@ const photoContainer = document.querySelector('.photo-upload');
 const photoInput = document.getElementById('image');
 
 photoInput.addEventListener('change', (el) => {
-    if(!el.target.value){
-        phoneContainer.classList.add('error')
-        // აქ უნდა დავამატო გაფრთხილების icon
+    
+    if(photoInput.files.length > 0){
+        photoContainer.classList.remove('error')
+        photoValid = true;
+    }else{
+        photoContainer.classList.add('error');
+        photoValid = false;
     }
 })
 
@@ -237,3 +241,39 @@ window.onload = function() {
         phoneIcon.style.display = displayPhone;
     }
 };
+
+const form = document.getElementById('form');
+form.addEventListener('submit', (el) => {
+    el.preventDefault();
+    if(!name.value.trim()){
+        firstname.classList.remove('success');
+        firstname.classList.add('error');
+        nameValid = false;
+    }
+    if(!surname.value.trim()){
+        lastname.classList.remove('success');
+        lastname.classList.add('error');
+        surnameValid = false;
+    }
+    if(photoInput.files.length <= 0){
+        photoContainer.classList.add('error')
+        photoValid = false;
+    }
+    if(!emailInput.value.trim()){
+        emailContainer.classList.add('error');
+        emailValid = false;
+    }
+    if(!phoneInput.value.trim()){
+        phoneContainer.classList.add('error');
+        mobileValid = false;
+    }
+    if(
+        nameValid &&
+        surnameValid &&
+        photoValid &&
+        emailValid &&
+        mobileValid
+    ) {
+        window.location.href = "experience.html";
+    }
+})
