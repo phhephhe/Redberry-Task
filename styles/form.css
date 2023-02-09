@@ -233,6 +233,9 @@
 /* experience page */
 
 /* error & success classes */
+.borderRed{
+    border-color: #E52F2F !important;
+}
 .borderGreen {
     border-color: #98E37E !important;
 }

@@ -142,6 +142,7 @@ aboutMeTextarea.addEventListener('change', (el) => {
         localStorage.setItem("displayAbout", about.style.display); 
     }else{
         aboutMeTextarea.classList.remove('borderGreen')
+        about.style.display = 'none';
     }
 });
 
