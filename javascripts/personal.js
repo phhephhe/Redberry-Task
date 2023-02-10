@@ -111,6 +111,7 @@ surname.addEventListener('change', (el) => {
 })
 
 // PHOTO
+
 const photoContainer = document.querySelector('.photo-upload');
 const photoInput = document.getElementById('image');
 
@@ -118,13 +119,15 @@ photoInput.addEventListener('change', (el) => {
     
     if(photoInput.files.length > 0){
         photoContainer.classList.remove('error')
+        photoContainer.classList.add('success')
         photoValid = true;
     }else{
+        photoContainer.classList.remove('success')
         photoContainer.classList.add('error');
         photoValid = false;
     }
 })
-
+  
 // ABOUT ME არა სავალდებულო
 const rAbout = document.getElementById('r-about_me');
 //rightcontaner red text
@@ -256,7 +259,7 @@ form.addEventListener('submit', (el) => {
         lastname.classList.add('error');
         surnameValid = false;
     }
-    if(photoInput.files.length <= 0){
+    if(photoInput.files.length <= 0 && !localStorage.getItem('image')){
         photoContainer.classList.add('error')
         photoValid = false;
     }
