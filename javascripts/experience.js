@@ -159,3 +159,168 @@ descriptionInput.addEventListener('change', (el) => {
       descriptionValid = true;
     }
 })
+
+// New EXPERIENCE
+
+const moreExperienceBtn = document.querySelector('.add-experience-btn');
+const newExperience = document.querySelector('.new-experience')
+moreExperienceBtn.addEventListener('click', (e) => {
+  e.preventDefault()
+  const container = document.createElement('container');
+  // Create form elements
+  const emailContainer = document.createElement("div");
+  emailContainer.classList.add("email-container");
+  const emailLabel = document.createElement("label");
+  emailLabel.setAttribute("for", "position");
+  emailLabel.textContent = "თანამდებობა";
+  const emailInput = document.createElement("input");
+  emailInput.setAttribute("type", "text");
+  emailInput.setAttribute("name", "position");
+  emailInput.setAttribute("id", "position");
+  emailInput.setAttribute("placeholder", "დეველოპერი, დიზაინერი, ა.შ.");
+  const emailP = document.createElement("p");
+  emailP.textContent = "მინიმუმ 2 სიმბოლო";
+  const emailCheck = document.createElement("img");
+  emailCheck.setAttribute("src", "photos/check.png");
+  emailCheck.classList.add("check");
+  const emailWarning = document.createElement("img");
+  emailWarning.setAttribute("src", "photos/error.png");
+  emailWarning.classList.add("warning");
+//   // Append elements to emailContainer
+  emailContainer.appendChild(emailLabel);
+  emailContainer.appendChild(emailInput);
+  emailContainer.appendChild(emailP);
+  emailContainer.appendChild(emailCheck);
+  emailContainer.appendChild(emailWarning);
+  // კონტეინერში ჩამატება
+  container.appendChild(emailContainer);
+// დამსაქმებელი
+  const phoneContainer = document.createElement("div");
+  phoneContainer.classList.add("phone-container");
+  const phoneLabel = document.createElement("label");
+  phoneLabel.setAttribute("for", "employer");
+  phoneLabel.textContent = "დამსაქმებელი";
+  const phoneInput = document.createElement("input");
+  phoneInput.setAttribute("type", "text");
+  phoneInput.setAttribute("name", "employer");
+  phoneInput.setAttribute("id", "employer");
+  phoneInput.setAttribute("placeholder", "დამსაქმებელი");
+  const phoneP = document.createElement("p");
+  phoneP.textContent = "მინიმუმ 2 სიმბოლო";
+  const phoneCheck = document.createElement("img");
+  phoneCheck.setAttribute("src", "photos/check.png");
+  phoneCheck.classList.add("check");
+  const phoneWarning = document.createElement("img");
+  phoneWarning.setAttribute("src", "photos/error.png");
+  phoneWarning.classList.add("warning");
+  phoneContainer.appendChild(phoneLabel);
+  phoneContainer.appendChild(phoneInput);
+  phoneContainer.appendChild(phoneP);
+  phoneContainer.appendChild(phoneCheck);
+  phoneContainer.appendChild(phoneWarning);
+  // კონტეინერში ჩამატება
+  container.appendChild(phoneContainer);
+
+// Create fullname div
+const fullnameContainer = document.createElement("div");
+fullnameContainer.classList.add("fullname");
+
+// Create name div
+const nameContainer = document.createElement("div");
+nameContainer.classList.add("name");
+
+const startDateLabel = document.createElement("label");
+startDateLabel.setAttribute("for", "start_date");
+startDateLabel.innerHTML = "დაწყების რიცხვი";
+
+const startDateInput = document.createElement("input");
+startDateInput.setAttribute("type", "date");
+startDateInput.setAttribute("name", "start_date");
+startDateInput.setAttribute("id", "start_date");
+
+nameContainer.appendChild(startDateLabel);
+nameContainer.appendChild(startDateInput);
+
+// Create surname div
+const surnameContainer = document.createElement("div");
+surnameContainer.classList.add("surname");
+
+const dueDateLabel = document.createElement("label");
+dueDateLabel.setAttribute("for", "due_date");
+dueDateLabel.innerHTML = "დამთავრების რიცხვი";
+
+const dueDateInput = document.createElement("input");
+dueDateInput.setAttribute("type", "date");
+dueDateInput.setAttribute("name", "due_date");
+dueDateInput.setAttribute("id", "due_date");
+
+surnameContainer.appendChild(dueDateLabel);
+surnameContainer.appendChild(dueDateInput);
+
+fullnameContainer.appendChild(nameContainer);
+fullnameContainer.appendChild(surnameContainer);
+  // კონტეინერში ჩამატება
+container.appendChild(fullnameContainer);
+// // Create about-me container
+const aboutMeContainer = document.createElement("div");
+aboutMeContainer.classList.add("about-me-container");
+const descriptionLabel = document.createElement("label");
+descriptionLabel.setAttribute("for", "description");
+descriptionLabel.innerHTML = "აღწერა";
+const descriptionInput = document.createElement("textarea");
+descriptionInput.classList.add('textarea')
+descriptionInput.setAttribute("name", "description");
+descriptionInput.setAttribute("id", "description");
+descriptionInput.setAttribute("placeholder", "როლი თანამდებობაზე და ზოგადი აღწერა");
+aboutMeContainer.appendChild(descriptionLabel);
+aboutMeContainer.appendChild(descriptionInput);
+  // კონტეინერში ჩამატება
+container.appendChild(aboutMeContainer);
+// // //Create the line div
+var line = document.createElement("div");
+line.classList.add("line");
+container.appendChild(line)
+  // საბოლოო კონტაინერში დამატება
+newExperience.appendChild(container)
+})
+
+// Validation
+
+const form = document.getElementById('form');
+form.addEventListener('submit', (el) => {
+    el.preventDefault()
+    if(!positionInput.value.trim()){
+      positionContainer.classList.remove('success');
+      positionContainer.classList.add('error');
+      positionValid = false;
+    } 
+    if(!employerInput.value.trim()){
+      employerContainer.classList.remove('success');
+      employerContainer.classList.add('error');
+      employerValid = false;
+    }
+    if(!starDateInput.value.trim()){
+      starDateContainer.classList.remove('success');
+      starDateContainer.classList.add('error');
+      starDateValid = false;
+    }
+    if(!dueDateInput.value.trim()){
+      dueDateContainer.classList.remove('success');
+      dueDateContainer.classList.add('error');
+      dueDateValid = false;
+    }
+    if(!descriptionInput.value.trim()){
+      descriptionInput.classList.remove('borderGreen');
+      descriptionInput.classList.add('borderRed');
+      descriptionValid = false;
+    }
+    if(
+      positionValid &&
+      employerValid &&
+      starDateValid &&
+      dueDateValid &&
+      descriptionValid
+      ){
+        window.location.href = "education.html";
+      }
+})
