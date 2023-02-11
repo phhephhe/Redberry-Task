@@ -253,3 +253,10 @@
 .error .warning {
     display: block;
 }
+/* degree */
+.success .select {
+    border-color: #98E37E;
+}
+.error .select{
+    border-color: #E52F2F;
+}

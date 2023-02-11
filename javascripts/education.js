@@ -64,12 +64,61 @@ function livetype(inputFieldId, outputId) {
 livetype('institute','r-institute');
 livetype('due_date','r-institute_due_date');
 livetype('description','r-education_description');
-// degree
-const degree = document.getElementById('degree');
-let resumeDegree = document.getElementById('r-degree');
 
-degree.addEventListener('change', function() {
-  let selectedOption = degree.options[degree.selectedIndex];
-  console.log(selectedOption.text)
-  resumeDegree.textContent = selectedOption.text;
-});
+
+// Validations
+
+let instituteValid = true;
+
+const instituteContainer = document.querySelector('.email-container');
+const instituteInput = document.getElementById('institute');
+instituteInput.value = localStorage.getItem('institute') ? localStorage.getItem('institute') : "";
+const rInstitute = document.getElementById('r-institute');
+rInstitute.innerHTML = localStorage.getItem('institute') ? localStorage.getItem('institute') : "";
+
+instituteInput.addEventListener('change', (el) => {
+  if(!el.target.value.trim()){
+    localStorage.setItem('institute', el.target.value.trim());
+    instituteContainer.classList.remove('success');
+    instituteContainer.classList.add('error');
+    instituteValid = false;
+  }else if(el.target.value.trim().length < 2){
+    localStorage.setItem('institute', el.target.value.trim());
+    instituteContainer.classList.remove('success');
+    instituteContainer.classList.add('error');
+    instituteValid = false;
+  }else{
+    localStorage.setItem('institute', el.target.value.trim());
+    instituteContainer.classList.remove('error');
+    instituteContainer.classList.add('success');
+    instituteValid = true;
+  }
+})
+
+// degree
+
+let degreeValid = true;
+
+const degreeContainer = document.querySelector('.name')
+const degreeInput = document.getElementById('degree');
+const selectedOption = degreeInput.options[degreeInput.selectedIndex];
+selectedOption.text = localStorage.getItem('degree') ? localStorage.getItem('degree') : "";
+const rDegree = document.getElementById('r-degree');
+rDegree.innerHTML = localStorage.getItem('degree') ? localStorage.getItem('degree') : "";
+degreeInput.addEventListener('change', (el) => {
+    console.log(degreeInput.value);
+
+    let selectedOption = degreeInput.options[degreeInput.selectedIndex];
+    rDegree.innerHTML = selectedOption.text;
+    if(!el.target.value.trim()){
+      localStorage.setItem('degree',selectedOption.text);
+      degreeContainer.classList.remove('success');
+      degreeContainer.classList.add('error');
+      degreeValid = false;
+    }else{
+      localStorage.setItem('degree',selectedOption.text);
+      degreeContainer.classList.remove('error');
+      degreeContainer.classList.add('success');
+      degreeValid = true;
+    }
+})

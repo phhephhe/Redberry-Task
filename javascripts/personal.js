@@ -64,14 +64,17 @@ rName.innerHTML = localStorage.getItem('name') ? localStorage.getItem('name') : 
 
 name.addEventListener('change', (el) => {
     if(!el.target.value.trim()){
+        localStorage.setItem('name', el.target.value.trim());
         firstname.classList.remove('success');
         firstname.classList.add('error');
         nameValid = false;
     }else if(el.target.value.trim().length < 2){
+        localStorage.setItem('name', el.target.value.trim());
         firstname.classList.remove('success');
         firstname.classList.add('error');
         nameValid = false;
     }else if(!checkLang(el.target.value.trim())){
+        localStorage.setItem('name', el.target.value.trim());
         firstname.classList.remove('success');
         firstname.classList.add('error');
         nameValid = false;
@@ -91,14 +94,17 @@ rSurname.innerHTML = localStorage.getItem('surname') ? localStorage.getItem('sur
 
 surname.addEventListener('change', (el) => {
     if(!el.target.value.trim()){
+        localStorage.setItem('surname', el.target.value.trim());
         lastname.classList.remove('success');
         lastname.classList.add('error');
         surnameValid = false;
     }else if(el.target.value.trim().length < 2){
+        localStorage.setItem('surname', el.target.value.trim());
         lastname.classList.remove('success');
         lastname.classList.add('error');
         surnameValid = false;
     }else if(!checkLang(el.target.value.trim())){
+        localStorage.setItem('surname', el.target.value.trim());
         lastname.classList.remove('success');
         lastname.classList.add('error');
         surnameValid = false;
@@ -168,14 +174,17 @@ emailInput.addEventListener('change', (el) => {
         sabachka.style.display = 'none'
     }
     if(!el.target.value.trim()){
+        localStorage.setItem('email', el.target.value.trim());
         emailContainer.classList.remove('success');
         emailContainer.classList.add('error');
         emailValid = false;
     }else if(!el.target.value.match(mailValidation)){
+        localStorage.setItem('email', el.target.value.trim());
         emailContainer.classList.remove('success');
         emailContainer.classList.add('error');
         emailValid = false;
     }else if(!el.target.value.match(redberryMail)){
+        localStorage.setItem('email', el.target.value.trim());
         emailContainer.classList.remove('success');
         emailContainer.classList.add('error');
         emailValid = false;
@@ -213,10 +222,12 @@ phoneInput.addEventListener('change', (el) => {
         phoneIcon.style.display = 'none'
     }
     if(!el.target.value.trim()){
+        localStorage.setItem('phone_number', el.target.value.trim().replaceAll(' ', ''));
         phoneContainer.classList.add('error');
         phoneContainer.classList.remove('success');
         mobileValid = false;
     }else if(!checkNumber(el.target.value)) {
+        localStorage.setItem('phone_number', el.target.value.trim().replaceAll(' ', ''));
         phoneContainer.classList.add('error');
         phoneContainer.classList.remove('success');
         mobileValid = false;

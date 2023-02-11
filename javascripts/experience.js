@@ -39,7 +39,7 @@ if(localStorage.getItem('about_me')){
 }else{
   document.querySelector('.about-me').style.display = "none";
 }
-// validation
+// validations
 
 // position
 let positionValid = true;
@@ -52,10 +52,12 @@ rPosition.innerHTML = localStorage.getItem('position') ? localStorage.getItem('p
 
 positionInput.addEventListener('change', (el) => {
     if(!el.target.value.trim()){
+      localStorage.setItem('position', el.target.value.trim());
       positionContainer.classList.remove('success');
       positionContainer.classList.add('error');
       positionValid = false;
     }else if(el.target.value.trim().length < 2){
+      localStorage.setItem('position', el.target.value.trim());
       positionContainer.classList.remove('success');
       positionContainer.classList.add('error');
       positionValid = false;
@@ -78,10 +80,12 @@ rEmployer.innerHTML = localStorage.getItem('employer') ? localStorage.getItem('e
 
 employerInput.addEventListener('change', (el) => {
     if(!el.target.value.trim()){
+      localStorage.setItem('employer', el.target.value.trim());
       employerContainer.classList.remove('success');
       employerContainer.classList.add('error');
       employerValid = false;
     }else if(el.target.value.trim().length < 2){
+      localStorage.setItem('employer', el.target.value.trim());
       employerContainer.classList.remove('success');
       employerContainer.classList.add('error');
       employerValid = false;
@@ -104,6 +108,7 @@ rStartDate.innerHTML = localStorage.getItem('start_date') ? localStorage.getItem
 
 starDateInput.addEventListener('change', (el) => {
     if(!el.target.value.trim()){
+      localStorage.setItem('start_date', el.target.value.trim());
       starDateContainer.classList.remove('success');
       starDateContainer.classList.add('error');
       starDateValid = false;
@@ -127,6 +132,7 @@ rDueDate.innerHTML = localStorage.getItem('due_date') ? localStorage.getItem('du
 
 dueDateInput.addEventListener('change', (el) => {
     if(!el.target.value.trim()){
+      localStorage.setItem('due_date', el.target.value.trim());
       dueDateContainer.classList.remove('success');
       dueDateContainer.classList.add('error');
       dueDateValid = false;
@@ -149,6 +155,7 @@ rDescription.innerHTML = localStorage.getItem('description') ? localStorage.getI
 
 descriptionInput.addEventListener('change', (el) => {
     if(!el.target.value.trim()){
+      localStorage.setItem('description', el.target.value.trim());
       descriptionInput.classList.remove('borderGreen');
       descriptionInput.classList.add('borderRed');
       descriptionValid = false;
