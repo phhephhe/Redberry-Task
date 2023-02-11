@@ -291,6 +291,6 @@ container.appendChild(aboutMeContainer);
 var line = document.createElement("div");
 line.classList.add("line");
 container.appendChild(line)
-    // საბოლოო კონტაინერში დამატება
-    newEducation.appendChild(container)
+  // საბოლოო კონტაინერში დამატება
+newEducation.appendChild(container);
 })
