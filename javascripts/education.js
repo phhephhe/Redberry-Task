@@ -36,8 +36,8 @@ rStartDate.innerHTML = localStorage.getItem('start_date') ? localStorage.getItem
 const rDueDate = document.getElementById('r-due_date');
 rDueDate.innerHTML = localStorage.getItem('due_date') ? localStorage.getItem('due_date') : "";
 // description
-const rEducDescription = document.getElementById('r-education_description');
-rEducDescription.innerHTML = localStorage.getItem('description') ? localStorage.getItem('description') : "";
+const rExperienceDescription = document.getElementById('r-description');
+rExperienceDescription.innerHTML = localStorage.getItem('description') ? localStorage.getItem('description') : "";
 // get degree information
 fetch('https://resume.redberryinternship.ge/api/degrees')
     .then(response => response.json())
