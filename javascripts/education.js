@@ -102,7 +102,7 @@ let degreeValid = true;
 const degreeContainer = document.querySelector('.name')
 const degreeInput = document.getElementById('degree');
 const selectedOption = degreeInput.options[degreeInput.selectedIndex];
-selectedOption.text = localStorage.getItem('degree') ? localStorage.getItem('degree') : "";
+selectedOption.text = localStorage.getItem('degree') ? localStorage.getItem('degree') : "აირჩიე ხარისხი";
 const rDegree = document.getElementById('r-degree');
 rDegree.innerHTML = localStorage.getItem('degree') ? localStorage.getItem('degree') : "";
 degreeInput.addEventListener('change', (el) => {
@@ -121,4 +121,176 @@ degreeInput.addEventListener('change', (el) => {
       degreeContainer.classList.add('success');
       degreeValid = true;
     }
+})
+// დამთავრების თარიღი (უნივერსიტეტი)
+let dueDateValid = true;
+
+const dueDateContainer = document.querySelector('.surname')
+const dueDateInput = document.getElementById('due_date');
+dueDateInput.value = localStorage.getItem('Idue_date') ? localStorage.getItem('Idue_date') : "";
+const rInstituteDueDate = document.getElementById('r-institute_due_date');
+rInstituteDueDate.innerHTML = localStorage.getItem('Idue_date') ? localStorage.getItem('Idue_date') : "";
+
+dueDateInput.addEventListener('change', (el) => {
+    if(!el.target.value.trim()){
+      localStorage.setItem('Idue_date', el.target.value.trim());
+      dueDateContainer.classList.remove('success');
+      dueDateContainer.classList.add('error');
+      dueDateValid = false;
+    }else{
+      localStorage.setItem('Idue_date', el.target.value.trim());
+      dueDateContainer.classList.remove('error');
+      dueDateContainer.classList.add('success');
+      dueDateValid = true;
+    }
+})
+// description EDUCATION
+let EdescriptionValid = true;
+
+const EdescriptionContainer = document.querySelector('.about-me-container')
+const EdescriptionInput = document.getElementById('description');
+EdescriptionInput.value = localStorage.getItem('Edescription') ? localStorage.getItem('Edescription') : "";
+const ErDescription = document.getElementById('r-education_description');
+ErDescription.innerHTML = localStorage.getItem('Edescription') ? localStorage.getItem('Edescription') : "";
+
+EdescriptionInput.addEventListener('change', (el) => {
+    if(!el.target.value.trim()){
+      localStorage.setItem('Edescription', el.target.value.trim());
+      EdescriptionInput.classList.remove('borderGreen');
+      EdescriptionInput.classList.add('borderRed');
+      EdescriptionValid = false;
+    }else{
+      localStorage.setItem('Edescription', el.target.value.trim());
+      EdescriptionInput.classList.add('borderGreen');
+      EdescriptionInput.classList.remove('borderRed');
+      EdescriptionValid = true;
+    }
+})
+
+// more education
+
+const moreEducationBtn = document.querySelector('.add-experience-btn');
+const newEducation = document.querySelector('.new-experience')
+moreEducationBtn.addEventListener('click', (el) => {
+  el.preventDefault();
+  
+  // Create form elements
+  const container = document.createElement('container');
+ // Create form elements
+ const emailContainer = document.createElement("div");
+ emailContainer.classList.add("email-container");
+ const emailLabel = document.createElement("label");
+ emailLabel.setAttribute("for", "institute");
+ emailLabel.textContent = "სასწავლებელი";
+ const emailInput = document.createElement("input");
+ emailInput.setAttribute("type", "text");
+ emailInput.setAttribute("name", "institute");
+ emailInput.setAttribute("id", "institute");
+ emailInput.setAttribute("placeholder", "სასწავლებელი");
+ const emailP = document.createElement("p");
+ emailP.textContent = "მინიმუმ 2 სიმბოლო";
+ const emailCheck = document.createElement("img");
+ emailCheck.setAttribute("src", "photos/check.png");
+ emailCheck.classList.add("check");
+ const emailWarning = document.createElement("img");
+ emailWarning.setAttribute("src", "photos/error.png");
+ emailWarning.classList.add("warning");
+  // Append elements to emailContainer
+  emailContainer.appendChild(emailLabel);
+  emailContainer.appendChild(emailInput);
+  emailContainer.appendChild(emailP);
+  emailContainer.appendChild(emailCheck);
+  emailContainer.appendChild(emailWarning);
+  // კონტეინერში ჩამატება
+  container.appendChild(emailContainer);
+// degree
+// Create fullname div
+const fullnameContainer = document.createElement("div");
+fullnameContainer.classList.add("fullname");
+//create degree div-container
+const nameContainer = document.createElement("div");
+nameContainer.classList.add("name");
+// create degree label
+const degreeLabel = document.createElement("label");
+degreeLabel.setAttribute("for", "degree");
+degreeLabel.innerHTML = 'ხარისხი';
+// select dropdown and fetch
+// Create the select element
+let select = document.createElement('select');
+select.name = 'degree';
+select.id = 'degree';
+select.classList.add('select');
+
+// Create the default option
+let defaultOption = document.createElement('option');
+defaultOption.value = '';
+defaultOption.disabled = true;
+defaultOption.selected = true;
+defaultOption.textContent = 'აირჩიე ხარისხი';
+
+// Append the default option to the select element
+select.appendChild(defaultOption);
+
+// Fetch the options from the API endpoint
+fetch('https://resume.redberryinternship.ge/api/degrees')
+  .then(response => response.json())
+  .then(data => {
+    // Create an option for each item in the data array
+    data.forEach(item => {
+      let option = document.createElement('option');
+      option.value = item.id;
+      option.textContent = item.title;
+      // Append the option to the select element
+      select.appendChild(option);
+    });
+  })
+  .catch(error => console.error(error));
+
+  // label-ის ჩაგდება containerში
+  nameContainer.appendChild(degreeLabel);
+  // name container ში ჩაგდება
+  nameContainer.appendChild(select)
+  // surname container
+  const surnameContainer = document.createElement("div");
+  surnameContainer.classList.add("surname");
+  
+  const dueDateLabel = document.createElement("label");
+  dueDateLabel.setAttribute("for", "due_date");
+  dueDateLabel.innerHTML = "დამთავრების რიცხვი";
+  
+  const dueDateInput = document.createElement("input");
+  dueDateInput.setAttribute("type", "date");
+  dueDateInput.setAttribute("name", "due_date");
+  dueDateInput.setAttribute("id", "due_date");
+  
+  surnameContainer.appendChild(dueDateLabel);
+  surnameContainer.appendChild(dueDateInput);
+
+// კონტეინერში ჩამატება
+fullnameContainer.appendChild(nameContainer);
+fullnameContainer.appendChild(surnameContainer);
+  // კონტეინერში ჩამატება
+container.appendChild(fullnameContainer);
+
+// // Create about-me container
+const aboutMeContainer = document.createElement("div");
+aboutMeContainer.classList.add("about-me-container");
+const descriptionLabel = document.createElement("label");
+descriptionLabel.setAttribute("for", "description");
+descriptionLabel.innerHTML = "აღწერა";
+const descriptionInput = document.createElement("textarea");
+descriptionInput.classList.add('textarea')
+descriptionInput.setAttribute("name", "description");
+descriptionInput.setAttribute("id", "description");
+descriptionInput.setAttribute("placeholder", "განათლების აღწერა");
+aboutMeContainer.appendChild(descriptionLabel);
+aboutMeContainer.appendChild(descriptionInput);
+  // კონტეინერში ჩამატება
+container.appendChild(aboutMeContainer);
+// // //Create the line div
+var line = document.createElement("div");
+line.classList.add("line");
+container.appendChild(line)
+    // საბოლოო კონტაინერში დამატება
+    newEducation.appendChild(container)
 })
