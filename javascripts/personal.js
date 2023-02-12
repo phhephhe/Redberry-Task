@@ -23,27 +23,36 @@ function livetype(inputFieldId, outputId) {
 
 const imageInput = document.getElementById('image');
 let imageContainer = document.querySelector('.image-container')
+
 imageInput.addEventListener("change", function() {
   const reader = new FileReader();
 
   reader.onload = function(event) {
+    // Convert the image data to a binary string
+    const binaryData = event.target.result.split(',')[1];
+
+    // Save the binary data to local storage
+    localStorage.setItem('image', binaryData);
+
+    // Create an image element and set its source to the data URL
     const resumeImage = document.createElement('img');
     resumeImage.src = event.target.result;
-    imageContainer.appendChild(resumeImage)
-    localStorage.setItem('image', event.target.result );
+    imageContainer.appendChild(resumeImage);
   };
 
+  // Read the image file as a data URL
   reader.readAsDataURL(imageInput.files[0]);
 });
-var imageData = localStorage.getItem('image');
-if (imageData) {
-    // Create an image element
-    var image = new Image();
-    image.src = imageData;
 
-    // Append the image to the body
-    imageContainer.appendChild(image);
-  }
+const imageData = localStorage.getItem('image');
+if (imageData) {
+  // Create an image element and set its source to the binary data
+  const image = new Image();
+  image.src = 'data:image/png;base64,' + imageData;
+
+  // Append the image to the image container
+  imageContainer.appendChild(image);
+}
 
 // check georgian language
 function checkLang(text = '') {

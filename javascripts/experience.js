@@ -23,7 +23,12 @@ const rSurname = document.getElementById('r-surname');
 rSurname.innerHTML = localStorage.getItem('surname') ? localStorage.getItem('surname') : "";
 // photo
 let expImage = document.getElementById('r-image');
-expImage.src = localStorage.getItem("image");
+const imageData = localStorage.getItem('image');
+if (imageData) {
+  // Set the source of the expImage element to the binary data
+  expImage.src = 'data:image/png;base64,' + imageData;
+}
+
 // email
 const rEmail = document.getElementById('r-email');
 rEmail.innerHTML = localStorage.getItem('email') ? localStorage.getItem('email') : '';

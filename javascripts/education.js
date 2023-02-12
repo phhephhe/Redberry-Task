@@ -7,7 +7,12 @@ const rSurname = document.getElementById('r-surname');
 rSurname.innerHTML = localStorage.getItem('surname') ? localStorage.getItem('surname') : "";
 // photo
 let expImage = document.getElementById('r-image');
-expImage.src = localStorage.getItem("image");
+const imageData = localStorage.getItem('image');
+if (imageData) {
+  // Set the source of the expImage element to the binary data
+  expImage.src = 'data:image/png;base64,' + imageData;
+}
+
 // email
 const rEmail = document.getElementById('r-email');
 rEmail.innerHTML = localStorage.getItem('email') ? localStorage.getItem('email') : '';
@@ -342,18 +347,9 @@ form.addEventListener('submit', (e) => {
         description: localStorage.getItem('Edescription')
       }
     ];
-    // Add form fields to the FormData object
-    // formData.append("name", localStorage.getItem('name'));
-    // formData.append("surname", localStorage.getItem('surname'));
-    // formData.append("email", localStorage.getItem('email'));
-    // formData.append("phone_number", localStorage.getItem('phone_number'));
-    // formData.append("experiences", experiences);
-    // formData.append("educations", educations);
-    
-  //  photo
-    // formData.append("photo", blob);
-    
-      // Send the POST request
+ 
+
+
       fetch(url, {
         method: "POST",
         headers: {
@@ -364,6 +360,7 @@ form.addEventListener('submit', (e) => {
           surname:localStorage.getItem('surname'),
           email: localStorage.getItem('email'),
           phone_number :localStorage.getItem('phone_number'),
+          image: localStorage.getItem('image'),
           experiences: experiences,
           educations: educations
         })
@@ -377,10 +374,7 @@ form.addEventListener('submit', (e) => {
         }
         })
         .catch((error) => console.log(error));
-    
-    
   }
-
 })
 
 
