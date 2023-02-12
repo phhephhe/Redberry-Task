@@ -106,7 +106,6 @@ selectedOption.text = localStorage.getItem('degree') ? localStorage.getItem('deg
 const rDegree = document.getElementById('r-degree');
 rDegree.innerHTML = localStorage.getItem('degree') ? localStorage.getItem('degree') : "";
 degreeInput.addEventListener('change', (el) => {
-    console.log(degreeInput.value);
 
     let selectedOption = degreeInput.options[degreeInput.selectedIndex];
     rDegree.innerHTML = selectedOption.text;
@@ -293,4 +292,97 @@ line.classList.add("line");
 container.appendChild(line)
   // საბოლოო კონტაინერში დამატება
 newEducation.appendChild(container);
+});
+
+// submit validation and post request
+
+let form = document.getElementById('form')
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  if(!instituteInput.value.trim()){
+    instituteContainer.classList.remove('success');
+    instituteContainer.classList.add('error');
+    instituteValid = false;
+  }if(!localStorage.getItem('degree')){
+    degreeContainer.classList.remove('success');
+    degreeContainer.classList.add('error');
+    degreeValid = false;
+  }if(!dueDateInput.value.trim()){
+    dueDateContainer.classList.remove('success');
+    dueDateContainer.classList.add('error');
+    dueDateValid = false;
+  } if(!EdescriptionInput.value.trim()){
+    EdescriptionInput.classList.remove('borderGreen');
+    EdescriptionInput.classList.add('borderRed');
+    EdescriptionValid = false;
+  }if (instituteValid &&
+       degreeValid &&
+       dueDateValid &&
+       EdescriptionValid
+    ) {
+    console.log('post');
+    const url = "https://resume.redberryinternship.ge/api/cvs";
+    // const formData = new FormData();
+    const experiences = [
+      { 
+        position: localStorage.getItem('position'),
+        employer: localStorage.getItem('employer'),
+        start_date: localStorage.getItem('start_date'),
+        due_date: localStorage.getItem('due_date'),
+        description: localStorage.getItem('description')
+      }
+    ];
+    const educations = [
+      {
+        institute: localStorage.getItem('institute'),
+        degree: localStorage.getItem('degree'),
+        due_date: localStorage.getItem('Idue_date'),
+        description: localStorage.getItem('Edescription')
+      }
+    ];
+    // Add form fields to the FormData object
+    // formData.append("name", localStorage.getItem('name'));
+    // formData.append("surname", localStorage.getItem('surname'));
+    // formData.append("email", localStorage.getItem('email'));
+    // formData.append("phone_number", localStorage.getItem('phone_number'));
+    // formData.append("experiences", experiences);
+    // formData.append("educations", educations);
+    
+  //  photo
+    // formData.append("photo", blob);
+    
+      // Send the POST request
+      fetch(url, {
+        method: "POST",
+        headers: {
+          'Content-Type':'aplication/json'
+        },
+        body: JSON.stringify({
+          name:localStorage.getItem('name'),
+          surname:localStorage.getItem('surname'),
+          email: localStorage.getItem('email'),
+          phone_number :localStorage.getItem('phone_number'),
+          experiences: experiences,
+          educations: educations
+        })
+      })
+        .then((response) => response)
+        .then((data) => {
+          if(data.errors){
+            console.log(data)
+        } else {
+         window.location.href = "resume.html";
+        }
+        })
+        .catch((error) => console.log(error));
+    
+    
+  }
+
 })
+
+
+//   ეს ქვემოთ რაცაა არის პოსტ
+
