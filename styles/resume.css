@@ -110,3 +110,34 @@
     left: 78px;
     bottom: 44px;
 }
+/* success-container */
+.success-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 28px 30px 30px;
+    gap: 10px;
+    
+    position: absolute;
+    width: 427px;
+    height: 167px;
+    left: 1423px;
+    top: 53px;
+    
+    background: #FFFFFF;
+    border: 1px solid #E4E4E4;
+    box-shadow: 0px 4px 28px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 43px;
+}
+
+.x{
+    position: absolute;
+    left: 91%;
+    top: 17%;
+}

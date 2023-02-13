@@ -1,3 +1,17 @@
+// x display none
+const closeBtn = document.getElementById('x');
+const successContainer = document.querySelector('.success-container')
+g
+closeBtn.addEventListener("click", function() {
+  localStorage.setItem("divHidden", "true");
+  successContainer.style.display = "none";
+});
+
+window.addEventListener("load", function() {
+  if (localStorage.getItem("divHidden") === "true") {
+    successContainer.style.display = "none";
+  }
+});
 
 const firstname = document.getElementById('name');
 const surname = document.getElementById('surname');
