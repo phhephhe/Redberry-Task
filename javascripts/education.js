@@ -364,11 +364,12 @@ form.addEventListener('submit', (e) => {
       })
         .then((response) => response)
         .then((data) => {
-          if(data.errors){
-            console.log(data)
-        } else {
-         window.location.href = "resume.html";
-        }
+        //   if(data.errors){
+        //     console.log(data)
+        // } else {
+        //  window.location.href = "resume.html";
+        // }
+        console.log(data);
         })
         .catch((error) => console.log(error));
   }
