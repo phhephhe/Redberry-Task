@@ -327,7 +327,6 @@ form.addEventListener('submit', (e) => {
        dueDateValid &&
        EdescriptionValid
     ) {
-    // const formData = new FormData();
     const experiences = [
       { 
         position: localStorage.getItem('position'),
@@ -346,32 +345,57 @@ form.addEventListener('submit', (e) => {
       }
     ];
  
-      fetch("https://resume.redberryinternship.ge/api/cvs", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-        body: JSON.stringify({
-          mode:'no-cors',
-          name:localStorage.getItem('name'),
-          surname:localStorage.getItem('surname'),
-          email: localStorage.getItem('email'),
-          phone_number :localStorage.getItem('phone_number'),
-          image: localStorage.getItem('image'),
-          experiences: experiences,
-          educations: educations
-        })
-      })
-        .then((response) => response)
-        .then((data) => {
-          if(data.errors){
-            console.log(data)
-        } else {
-         window.location.href = "resume.html";
-        }
-        console.log(data);
-        })
-        .catch((error) => console.log(error));
+      // fetch("https://resume.redberryinternship.ge/api/cvs", {
+      //   method: "POST",
+      //   headers: {
+      //     'Content-Type': 'multipart/form-data',
+      //   },
+      //   body: JSON.stringify({
+      //     mode:'no-cors',
+      //     name:localStorage.getItem('name'),
+      //     surname:localStorage.getItem('surname'),
+      //     email: localStorage.getItem('email'),
+      //     phone_number :localStorage.getItem('phone_number'),
+      //     image: localStorage.getItem('image'),
+      //     experiences: experiences,
+      //     educations: educations
+      //   })
+      // })
+      //   .then((response) => response)
+      //   .then((data) => {
+      //     if(data.errors){
+      //       console.log(data)
+      //   } else {
+      //    window.location.href = "resume.html";
+      //   }
+      //   console.log(data);
+      //   })
+      //   .catch((error) => console.log(error));
+      axios.post('https://resume.redberryinternship.ge/api/cvs', {
+    mode: 'no-cors',
+    name: localStorage.getItem('name'),
+    surname: localStorage.getItem('surname'),
+    email: localStorage.getItem('email'),
+    phone_number: localStorage.getItem('phone_number'),
+    image: localStorage.getItem('image'),
+    experiences: experiences,
+    educations: educations
+}, {
+    headers: {
+        'Content-Type': 'multipart/form-data'
+    }
+})
+.then((response) => response)
+.then((data) => {
+    if (data.errors) {
+        console.log(data)
+    } else {
+        window.location.href = "resume.html";
+    }
+    console.log(data);
+})
+.catch((error) => console.log(error));
+
   }
 })
 
