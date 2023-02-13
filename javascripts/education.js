@@ -327,7 +327,6 @@ form.addEventListener('submit', (e) => {
        dueDateValid &&
        EdescriptionValid
     ) {
-    console.log('post');
     const url = "https://resume.redberryinternship.ge/api/cvs";
     // const formData = new FormData();
     const experiences = [
@@ -353,7 +352,7 @@ form.addEventListener('submit', (e) => {
       fetch(url, {
         method: "POST",
         headers: {
-          'Content-Type':'aplication/json'
+          'Content-Type': 'multipart/form-data'
         },
         body: JSON.stringify({
           name:localStorage.getItem('name'),
@@ -378,5 +377,4 @@ form.addEventListener('submit', (e) => {
 })
 
 
-//   ეს ქვემოთ რაცაა არის პოსტ
 

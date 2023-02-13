@@ -101,6 +101,10 @@
     white-space: pre-wrap;
     overflow-wrap: break-word;
 }
+#description  {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
 .small-logo{
     position: absolute;
     left: 78px;
