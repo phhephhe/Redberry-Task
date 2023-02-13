@@ -1,3 +1,4 @@
+
 // resume
 // name 
 const rName = document.getElementById('r-name');
@@ -345,56 +346,81 @@ form.addEventListener('submit', (e) => {
       }
     ];
  
-      // fetch("https://resume.redberryinternship.ge/api/cvs", {
-      //   method: "POST",
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data',
-      //   },
-      //   body: JSON.stringify({
-      //     mode:'no-cors',
-      //     name:localStorage.getItem('name'),
-      //     surname:localStorage.getItem('surname'),
-      //     email: localStorage.getItem('email'),
-      //     phone_number :localStorage.getItem('phone_number'),
-      //     image: localStorage.getItem('image'),
-      //     experiences: experiences,
-      //     educations: educations
-      //   })
-      // })
-      //   .then((response) => response)
-      //   .then((data) => {
-      //     if(data.errors){
-      //       console.log(data)
-      //   } else {
-      //    window.location.href = "resume.html";
-      //   }
-      //   console.log(data);
-      //   })
+      fetch("https://resume.redberryinternship.ge/api/cvs", {
+        mode:'no-cors',
+        method: "POST",
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        body: JSON.stringify({
+          name:localStorage.getItem('name'),
+          surname:localStorage.getItem('surname'),
+          email: localStorage.getItem('email'),
+          phone_number :localStorage.getItem('phone_number'),
+          image: localStorage.getItem('image'),
+          experiences: experiences,
+          educations: educations
+        })
+      })
+        .then((response) => response)
+        .then((data) => {
+          if(data.errors){
+            console.log(data)
+        } else {
+         window.location.href = "resume.html";
+        }
+        console.log(data);
+        })
       //   .catch((error) => console.log(error));
-      axios.post('https://resume.redberryinternship.ge/api/cvs', {
-    mode: 'no-cors',
-    name: localStorage.getItem('name'),
-    surname: localStorage.getItem('surname'),
-    email: localStorage.getItem('email'),
-    phone_number: localStorage.getItem('phone_number'),
-    image: localStorage.getItem('image'),
-    experiences: experiences,
-    educations: educations
-}, {
-    headers: {
-        'Content-Type': 'multipart/form-data'
-    }
-})
-.then((response) => response)
-.then((data) => {
-    if (data.errors) {
-        console.log(data)
-    } else {
-        window.location.href = "resume.html";
-    }
-    console.log(data);
-})
-.catch((error) => console.log(error));
+//       axios.post('https://resume.redberryinternship.ge/api/cvs', {
+//     mode: 'no-cors',
+//     name: localStorage.getItem('name'),
+//     surname: localStorage.getItem('surname'),
+//     email: localStorage.getItem('email'),
+//     phone_number: localStorage.getItem('phone_number'),
+//     image: localStorage.getItem('image'),
+//     experiences: experiences,
+//     educations: educations
+// }, {
+//     headers: {
+//         'Content-Type': 'multipart/form-data'
+//     }
+// })
+// .then((response) => response)
+// .then((data) => {
+//     if (data.errors) {
+//         console.log(data)
+//     } else {
+//         window.location.href = "resume.html";
+//     }
+//     console.log(data);
+// })
+// .catch((error) => console.log(error));
+// const formData = new FormData();
+// formData.append('mode', 'no-cors');
+// formData.append('name', localStorage.getItem('name'));
+// formData.append('surname', localStorage.getItem('surname'));
+// formData.append('email', localStorage.getItem('email'));
+// formData.append('phone_number', localStorage.getItem('phone_number'));
+// formData.append('image', localStorage.getItem('image'));
+// formData.append('experiences', JSON.stringify(experiences));
+// formData.append('educations', JSON.stringify(educations));
+
+// axios.post('https://resume.redberryinternship.ge/api/cvs', formData, {
+//     headers: {
+//         'Content-Type': 'multipart/form-data'
+//     }
+// })
+// .then((response) => response)
+// .then((data) => {
+//     if (data.errors) {
+//         console.log(data)
+//     } else {
+//         window.location.href = "resume.html";
+//     }
+//     console.log(data);
+// })
+// .catch((error) => console.log(error));
 
   }
 })
