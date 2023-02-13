@@ -327,7 +327,6 @@ form.addEventListener('submit', (e) => {
        dueDateValid &&
        EdescriptionValid
     ) {
-    const url = "https://resume.redberryinternship.ge/api/cvs";
     // const formData = new FormData();
     const experiences = [
       { 
@@ -347,7 +346,7 @@ form.addEventListener('submit', (e) => {
       }
     ];
  
-      fetch(url, {
+      fetch("https://resume.redberryinternship.ge/api/cvs", {
         method: "POST",
         headers: {
           'Content-Type': 'multipart/form-data',
