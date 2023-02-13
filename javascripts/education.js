@@ -351,7 +351,6 @@ form.addEventListener('submit', (e) => {
         method: "POST",
         headers: {
           'Content-Type': 'multipart/form-data',
-          
         },
         body: JSON.stringify({
           mode:'no-cors',
@@ -366,7 +365,11 @@ form.addEventListener('submit', (e) => {
       })
         .then((response) => response)
         .then((data) => {
-          console.log(data);
+          if(data.errors){
+            console.log(data)
+        } else {
+         window.location.href = "resume.html";
+        }
         })
         .catch((error) => console.log(error));
   }
