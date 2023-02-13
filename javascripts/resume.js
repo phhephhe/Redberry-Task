@@ -1,7 +1,7 @@
 // x display none
 const closeBtn = document.getElementById('x');
 const successContainer = document.querySelector('.success-container')
-g
+
 closeBtn.addEventListener("click", function() {
   localStorage.setItem("divHidden", "true");
   successContainer.style.display = "none";
