@@ -346,32 +346,72 @@ form.addEventListener('submit', (e) => {
       }
     ];
  
-      fetch("https://resume.redberryinternship.ge/api/cvs", {
-        mode:'no-cors',
-        method: "POST",
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-        body: JSON.stringify({
-          name:localStorage.getItem('name'),
-          surname:localStorage.getItem('surname'),
-          email: localStorage.getItem('email'),
-          phone_number :localStorage.getItem('phone_number'),
-          image: localStorage.getItem('image'),
-          experiences: experiences,
-          educations: educations
-        })
-      })
-        .then((response) => response)
-        .then((data) => {
-          if(data.errors){
-            console.log(data)
-        } else {
-         window.location.href = "resume.html";
-        }
-        console.log(data);
-        })
-     
+      // fetch("https://resume.redberryinternship.ge/api/cvs", {
+      //   mode:'no-cors',
+      //   method: "POST",
+      //   headers: {
+      //     'Content-Type': 'multipart/form-data',
+      //   },
+      //   body: JSON.stringify({
+      //     name:localStorage.getItem('name'),
+      //     surname:localStorage.getItem('surname'),
+      //     email: localStorage.getItem('email'),
+      //     phone_number :localStorage.getItem('phone_number'),
+      //     image: localStorage.getItem('image'),
+      //     experiences: experiences,
+      //     educations: educations
+      //   })
+      // })
+      //   .then((response) => response)
+      //   .then((data) => {
+      //     if(data.errors){
+      //       console.log(data)
+      //   } else {
+      //    window.location.href = "resume.html";
+      //   }
+      //   console.log(data);
+      //   })
+  
+
+      // Retrieve the image data from local storage
+const imageData = localStorage.getItem('image');
+
+// Convert the image data to a Blob object
+const blob = new Blob([imageData], { type: 'image/png' });
+
+// Now you can use the `blob` object to send the image data over the network
+
+
+const formData = new FormData();
+formData.append('mode', 'no-cors');
+formData.append('name', localStorage.getItem('name'));
+formData.append('surname', localStorage.getItem('surname'));
+formData.append('email', localStorage.getItem('email'));
+formData.append('phone_number', localStorage.getItem('phone_number'));
+formData.append('image', blob);
+formData.append('experiences', JSON.stringify(experiences));
+formData.append('educations', JSON.stringify(educations));
+
+fetch("https://resume.redberryinternship.ge/api/cvs", {
+  mode:'no-cors',
+  method: "POST",
+  headers: {
+    'Content-Type': 'multipart/form-data',
+  },
+  body: formData
+})
+  .then((response) => response)
+  .then((data) => {
+    if(data.errors){
+      console.log(data)
+  } else {
+   window.location.href = "resume.html";
+   log
+  }
+  console.log(data);
+  })
+// .catch((error) => console.log(error));
+
   }
 })
 
